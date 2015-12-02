@@ -15,6 +15,7 @@
 		49BC73F31C09A9C30097EE53 /* ProgressTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */; };
 		49BC73F51C09A9D10097EE53 /* DataTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F41C09A9D10097EE53 /* DataTabController.swift */; };
 		49BC73F71C09A9DE0097EE53 /* SettingsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F61C09A9DE0097EE53 /* SettingsTabController.swift */; };
+		B0EC06461C0E452800B0E0C2 /* NRFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC06451C0E452800B0E0C2 /* NRFManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTabController.swift; sourceTree = "<group>"; };
 		49BC73F41C09A9D10097EE53 /* DataTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTabController.swift; sourceTree = "<group>"; };
 		49BC73F61C09A9DE0097EE53 /* SettingsTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabController.swift; sourceTree = "<group>"; };
+		B0EC06451C0E452800B0E0C2 /* NRFManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRFManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				49A2C8AC1BF1091E0078220B /* AppDelegate.swift */,
+				B0EC06451C0E452800B0E0C2 /* NRFManager.swift */,
 				49BC73F01C09A93A0097EE53 /* HomeTabController.swift */,
 				49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */,
 				49BC73F41C09A9D10097EE53 /* DataTabController.swift */,
@@ -105,7 +108,7 @@
 				TargetAttributes = {
 					49A2C8A81BF1091E0078220B = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = Q5CU8SEJZB;
+						DevelopmentTeam = S8YNW6EC83;
 					};
 				};
 			};
@@ -149,6 +152,7 @@
 				49BC73F71C09A9DE0097EE53 /* SettingsTabController.swift in Sources */,
 				49BC73F31C09A9C30097EE53 /* ProgressTabController.swift in Sources */,
 				49A2C8AD1BF1091E0078220B /* AppDelegate.swift in Sources */,
+				B0EC06461C0E452800B0E0C2 /* NRFManager.swift in Sources */,
 				49BC73F51C09A9D10097EE53 /* DataTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,10 +266,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Kineesio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramamurthi.Kineesio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adhitramamurthi.Kineesio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -273,10 +280,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Kineesio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramamurthi.Kineesio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adhitramamurthi.Kineesio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

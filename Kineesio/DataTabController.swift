@@ -24,7 +24,22 @@ class DataTabController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+   // Date list
+    @IBOutlet weak var Date_Data: UITableViewCell!
+    
+    // Extension data list
+    @IBOutlet weak var Extension_Data: UITableViewCell!
 
+        //add that it reads in the data that is displayed in teh home page graph
+    
+    // flexion data list
+    @IBOutlet weak var Flexion_Data: UITableViewCell!
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

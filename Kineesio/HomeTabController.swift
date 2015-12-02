@@ -8,22 +8,55 @@
 
 import UIKit
 
-class HomeTabController: UIViewController {
+class HomeTabController: UIViewController, NRFManagerDelegate{
 
+    // initialize NRFmanager
+    var nrfManager:NRFManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nrfManager = NRFManager(delegate:self)
+    
         // Set nav view title to image
         let TitleLogo = UIImage(named: "kiKNEEsio Title.pdf")
         let TitleimageView = UIImageView(image:TitleLogo)
         self.navigationItem.titleView = TitleimageView
-        
-        
-        
-
-        // Do any additional setup after loading the view.
     }
+    
+    
+    // Connect to bluetooth device
+    func sendData(){
+        let result = self.nrfManager.writeString("Hello, world!")
+    }
+        
+        
+    // NRFManagerDelegate methods
+    func nrfDidConnect(nrfManager:NRFManager){
+        print("Connected")
+        self.sendData()
+    }
+        
+        // Do any additional setup after loading the view.
+    
 
+    
+    
+    // Bluetooth Button is pushed
+    @IBAction func bluetoothdownloadbutton(sender: UIButton) {
+        
+        //Connect to device
+        
+        
+        //Download Data
+        func nrfReceivedData(nrfManager:NRFManager, data: NSData?, string: String?) {
+            print("Received data - String: \(string) - Data: \(data)")
+        }
+        
+
+        //
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
