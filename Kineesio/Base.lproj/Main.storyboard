@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9QJ-Gc-P2B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9QJ-Gc-P2B">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -18,16 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-AU-YO4">
-                                <rect key="frame" x="112" y="64" width="376" height="92"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="376" id="b9n-qs-9Zq"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="376" id="fbk-WL-fCE"/>
-                                    <constraint firstAttribute="height" constant="92" id="hSb-wv-CPy"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="92" id="rzY-hC-ASm"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oA4-tP-d7s">
                                 <rect key="frame" x="30" y="471" width="540" height="55"/>
                                 <animations/>
@@ -36,16 +26,40 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-AU-YO4">
+                                <rect key="frame" x="0.0" y="64" width="600" height="92"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="hSb-wv-CPy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="92" id="rzY-hC-ASm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hSb-wv-CPy"/>
+                                        <exclude reference="rzY-hC-ASm"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="dj9-AU-YO4" firstAttribute="leading" secondItem="a9V-tt-vAI" secondAttribute="leadingMargin" constant="-20" id="6o7-1i-fct"/>
                             <constraint firstItem="dj9-AU-YO4" firstAttribute="centerX" secondItem="a9V-tt-vAI" secondAttribute="centerX" id="ETg-p4-iPw"/>
                             <constraint firstItem="oA4-tP-d7s" firstAttribute="leading" secondItem="a9V-tt-vAI" secondAttribute="leadingMargin" constant="10" id="Ir7-lP-Z8F"/>
+                            <constraint firstItem="dj9-AU-YO4" firstAttribute="top" secondItem="KcR-wl-gfo" secondAttribute="bottom" id="gcv-7T-xxp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dj9-AU-YO4" secondAttribute="trailing" constant="-20" id="pG4-CY-BlB"/>
+                            <constraint firstItem="dj9-AU-YO4" firstAttribute="centerX" secondItem="a9V-tt-vAI" secondAttribute="centerX" id="pq7-At-cUJ"/>
                             <constraint firstItem="dj9-AU-YO4" firstAttribute="top" secondItem="KcR-wl-gfo" secondAttribute="bottom" id="rYq-A3-tz6"/>
                             <constraint firstItem="UMH-AP-zqK" firstAttribute="top" secondItem="oA4-tP-d7s" secondAttribute="bottom" constant="25" id="vPt-J9-FVN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oA4-tP-d7s" secondAttribute="trailing" constant="10" id="yvg-4K-x8y"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ETg-p4-iPw"/>
+                                <exclude reference="rYq-A3-tz6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Cqh-3Z-WSd"/>
                 </viewController>
@@ -104,10 +118,59 @@
                     <view key="view" contentMode="scaleToFill" id="Y5k-w7-m1V">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oT-5B-ctJ">
+                                <rect key="frame" x="460" y="491" width="100" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Stop Scanning"/>
+                                <connections>
+                                    <action selector="stopScanningBLE:" destination="8OS-H4-zvM" eventType="touchUpInside" id="hhF-n8-kzh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-1B-05U">
+                                <rect key="frame" x="40" y="491" width="102" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Start Scanning"/>
+                                <connections>
+                                    <action selector="startScanningBLE:" destination="8OS-H4-zvM" eventType="touchUpInside" id="gzV-Hk-1tq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Scanning For Bluetooth Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLm-jG-IBp">
+                                <rect key="frame" x="139" y="290" width="322" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzx-2F-KUM">
+                                <rect key="frame" x="261" y="491" width="78" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Disconnect"/>
+                                <connections>
+                                    <action selector="disconnectBLE:" destination="8OS-H4-zvM" eventType="touchUpInside" id="pbb-39-dK4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="lHP-Gq-VhE" firstAttribute="top" secondItem="yzx-2F-KUM" secondAttribute="bottom" constant="30" id="Etg-5z-FuV"/>
+                            <constraint firstItem="lHP-Gq-VhE" firstAttribute="top" secondItem="u2N-1B-05U" secondAttribute="bottom" constant="30" id="Jjs-iE-CLP"/>
+                            <constraint firstItem="yzx-2F-KUM" firstAttribute="centerX" secondItem="Y5k-w7-m1V" secondAttribute="centerX" id="MLC-kc-Lky"/>
+                            <constraint firstItem="jLm-jG-IBp" firstAttribute="centerX" secondItem="Y5k-w7-m1V" secondAttribute="centerX" id="ZKV-fw-uqR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8oT-5B-ctJ" secondAttribute="trailing" constant="20" id="bjp-6h-ldQ"/>
+                            <constraint firstItem="jLm-jG-IBp" firstAttribute="centerY" secondItem="Y5k-w7-m1V" secondAttribute="centerY" id="fe7-w5-l09"/>
+                            <constraint firstItem="u2N-1B-05U" firstAttribute="leading" secondItem="Y5k-w7-m1V" secondAttribute="leadingMargin" constant="20" id="nuy-8Q-srv"/>
+                            <constraint firstItem="lHP-Gq-VhE" firstAttribute="top" secondItem="8oT-5B-ctJ" secondAttribute="bottom" constant="30" id="x2E-ny-zTC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="A6p-OF-HOH"/>
+                    <connections>
+                        <outlet property="bleStatusLabel" destination="jLm-jG-IBp" id="ZYU-4Y-UMx"/>
+                        <outlet property="disconnectButton" destination="yzx-2F-KUM" id="wjq-1g-Ukg"/>
+                        <outlet property="startScanningButton" destination="u2N-1B-05U" id="fKV-WC-5fA"/>
+                        <outlet property="stopScanningButton" destination="8oT-5B-ctJ" id="uMD-PP-zqk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zx-Bl-Yyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
