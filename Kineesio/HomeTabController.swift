@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class HomeTabController: UIViewController {
 
@@ -29,6 +30,8 @@ class HomeTabController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func startWorkout(sender: UIButton) {
+    }
 
     /*
     // MARK: - Navigation

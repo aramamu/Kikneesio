@@ -8,12 +8,16 @@
 
 import UIKit
 import CoreBluetooth
+import Foundation
 
-class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate{
     
     var bleManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
-    var rssiTimer = NSTimer()
+    var dVC = DataTableViewController()
+    
+    var uuidService = CBUUID.init(string: "E805671E-BD01-4A41-A294-056034CE2EEF")
+    var uuidChar = CBUUID.init(string: "06d90da3-8110-4358-8f23-e0955cb890ca")
     
     @IBOutlet weak var stopScanningButton: UIButton!
     @IBOutlet weak var bleStatusLabel: UILabel!
@@ -67,14 +71,13 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
     func centralManagerDidUpdateState(central: CBCentralManager) {
     }
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("Discovered \(peripheral.name)")
         
         if let deviceName = peripheral.name {
-            if deviceName == "Kikneesio"
+            if deviceName == "Kikneesio Brace"
             {
                 blePeripheral = peripheral
+                blePeripheral.delegate = self
                 bleManager.stopScan()
-                print(blePeripheral.name!)
                 bleManager.connectPeripheral(blePeripheral, options: nil)
             }
         }
@@ -84,12 +87,47 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
         self.startScanningButton.hidden = true
         self.stopScanningButton.hidden = true
         self.disconnectButton.hidden = false
+        
+        blePeripheral.discoverServices([uuidService])
+        
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        self.bleStatusLabel.text = "Disconnected From Bluetooth"
+        self.bleStatusLabel.text = "Disconnected From \(peripheral.name!)"
     }
-
+    
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+        print("Service")
+        let bleService: CBService = blePeripheral.services![0]
+        blePeripheral.discoverCharacteristics([uuidChar], forService: bleService)
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        print("Characteristics")
+        blePeripheral.readValueForCharacteristic(service.characteristics![0])
+        blePeripheral.setNotifyValue(true, forCharacteristic: service.characteristics![0])
+    }
+    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        if let jointAngle: NSData = characteristic.value {
+            let dataString = String(jointAngle)
+            let string = dataString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
+            let jointValue = UInt8(strtoul(string, nil, 16))
+            print(jointValue)
+            dVC.jointData = Int(jointValue)
+        }
+        
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        print("Subscribed")
+        
+        if (error != nil) {
+            print("Error Subscribing to Service")
+        }
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

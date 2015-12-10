@@ -13,8 +13,8 @@
 		49A2C8B91BF1091E0078220B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A2C8B71BF1091E0078220B /* LaunchScreen.storyboard */; };
 		49BC73F11C09A93A0097EE53 /* HomeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F01C09A93A0097EE53 /* HomeTabController.swift */; };
 		49BC73F31C09A9C30097EE53 /* ProgressTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */; };
-		49BC73F51C09A9D10097EE53 /* DataTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F41C09A9D10097EE53 /* DataTabController.swift */; };
 		49BC73F71C09A9DE0097EE53 /* SettingsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BC73F61C09A9DE0097EE53 /* SettingsTabController.swift */; };
+		49C8402B1C19A745006CB322 /* DataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C8402A1C19A745006CB322 /* DataTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		49A2C8BA1BF1091E0078220B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49BC73F01C09A93A0097EE53 /* HomeTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabController.swift; sourceTree = "<group>"; };
 		49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressTabController.swift; sourceTree = "<group>"; };
-		49BC73F41C09A9D10097EE53 /* DataTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTabController.swift; sourceTree = "<group>"; };
 		49BC73F61C09A9DE0097EE53 /* SettingsTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabController.swift; sourceTree = "<group>"; };
+		49C8402A1C19A745006CB322 /* DataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 				49A2C8AC1BF1091E0078220B /* AppDelegate.swift */,
 				49BC73F01C09A93A0097EE53 /* HomeTabController.swift */,
 				49BC73F21C09A9C30097EE53 /* ProgressTabController.swift */,
-				49BC73F41C09A9D10097EE53 /* DataTabController.swift */,
+				49C8402A1C19A745006CB322 /* DataTableViewController.swift */,
 				49BC73F61C09A9DE0097EE53 /* SettingsTabController.swift */,
 				49A2C8B21BF1091E0078220B /* Main.storyboard */,
 				4922F1B21C0E250000D1FE71 /* Assets.xcassets */,
@@ -146,10 +146,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BC73F11C09A93A0097EE53 /* HomeTabController.swift in Sources */,
+				49C8402B1C19A745006CB322 /* DataTableViewController.swift in Sources */,
 				49BC73F71C09A9DE0097EE53 /* SettingsTabController.swift in Sources */,
 				49BC73F31C09A9C30097EE53 /* ProgressTabController.swift in Sources */,
 				49A2C8AD1BF1091E0078220B /* AppDelegate.swift in Sources */,
-				49BC73F51C09A9D10097EE53 /* DataTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
