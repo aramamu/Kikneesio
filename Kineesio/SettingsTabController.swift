@@ -14,7 +14,7 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
     
     var bleManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
-    var dVC = DataTableViewController()
+    var blePeripheralManager = CBPeripheralManager()
     
     var uuidService = CBUUID.init(string: "E805671E-BD01-4A41-A294-056034CE2EEF")
     var uuidChar = CBUUID.init(string: "06d90da3-8110-4358-8f23-e0955cb890ca")
@@ -24,9 +24,6 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
     @IBOutlet weak var startScanningButton: UIButton!
     @IBOutlet weak var disconnectButton: UIButton!
     
-    override func viewWillAppear(animated: Bool) {
-        self.disconnectButton.hidden = true
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,16 +91,17 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         self.bleStatusLabel.text = "Disconnected From \(peripheral.name!)"
+        self.startScanningButton.hidden = false
+        self.stopScanningButton.hidden = false
+        self.disconnectButton.hidden = true
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("Service")
         let bleService: CBService = blePeripheral.services![0]
         blePeripheral.discoverCharacteristics([uuidChar], forService: bleService)
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        print("Characteristics")
         blePeripheral.readValueForCharacteristic(service.characteristics![0])
         blePeripheral.setNotifyValue(true, forCharacteristic: service.characteristics![0])
     }
@@ -113,14 +111,15 @@ class SettingsTabController: UIViewController, CBCentralManagerDelegate, CBPerip
             let string = dataString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
             let jointValue = UInt8(strtoul(string, nil, 16))
             print(jointValue)
-            dVC.jointData = Int(jointValue)
+            JointData.sharedInstance.jointArray.append(Int(jointValue))
+            if Int(jointValue) > JointData.sharedInstance.maxExtensionAngle {
+                JointData.sharedInstance.maxExtensionAngle = Int(jointValue)
+            }
         }
         
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("Subscribed")
-        
         if (error != nil) {
             print("Error Subscribing to Service")
         }

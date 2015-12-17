@@ -11,28 +11,30 @@ import UIKit
 
 class DataTableViewController: UITableViewController {
     
-    var jointArray: [Int] = []
-    var jointData: Int = 0 {
-        didSet {
-            print("\(jointData) Variable")
-            jointArray.append(jointData)
-            print(jointArray.count)
-        }
-    }
-
+    var joint = ["Hello", "Adhit", "How", "Are", "You"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         // Set nav view title to image
         let TitleLogo = UIImage(named: "Data Title.pdf")
         let TitleimageView = UIImageView(image:TitleLogo)
         self.navigationItem.titleView = TitleimageView
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        print("Refreshed")
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,24 +45,25 @@ class DataTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return jointArray.count
+        return JointData.sharedInstance.jointArray.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as! DataTableViewCell
 
         // Configure the cell...
+        
+        let jointAngleIndex = JointData.sharedInstance.jointArray[indexPath.row]
+        cell.jointAngleLabel?.text = "\(jointAngleIndex) degrees"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

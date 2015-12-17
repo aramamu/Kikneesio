@@ -9,8 +9,13 @@
 import UIKit
 import CoreBluetooth
 
-class HomeTabController: UIViewController {
+class HomeTabController: UIViewController, updateLabel {
 
+    @IBOutlet weak var maxExtensionLabel: UILabel!
+    @IBOutlet weak var maxFlexionLabel: UILabel!
+    @IBOutlet weak var numberUnsafeLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,17 +35,13 @@ class HomeTabController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func update() {
+        print("Updating")
+        self.maxExtensionLabel?.text =  "\(JointData.sharedInstance.maxExtensionAngle)"
+        self.maxFlexionLabel?.text = "\(JointData.sharedInstance.maxFlexionAngle)"
+    }
+    
     @IBAction func startWorkout(sender: UIButton) {
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
